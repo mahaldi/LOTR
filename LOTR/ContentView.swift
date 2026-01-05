@@ -123,11 +123,23 @@ struct ContentView: View {
                     .task {
                         try? Tips.configure()
                     }
+                    .onAppear {
+                        let savedLeftCurrency = UserDefaults.standard.double(forKey: "leftCurrency")
+                        let savedRightCurrency = UserDefaults.standard.double(forKey: "rightCurrency")
+                        if let savedLeftCurrency = Currency(rawValue: savedLeftCurrency) {
+                            self.leftCurrency = savedLeftCurrency
+                        }
+                        if let savedRightCurrency = Currency(rawValue: savedRightCurrency) {
+                            self.rightCurrency = savedRightCurrency
+                        }
+                    }
                     .onChange(of: leftCurrency, {
                         leftAmount = rightCurrency.convert(rightAmount, to: leftCurrency)
+                        UserDefaults.standard.set(leftCurrency.rawValue, forKey: "leftCurrency")
                     })
-                    .onChange(of: rightCurrency, {
+                    .onChange(of: rightCurrency, { oldValue, newValue in
                         rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
+                        UserDefaults.standard.set(rightCurrency.rawValue, forKey: "rightCurrency")
                     })
                     .sheet(isPresented: $showExchangeInfo) { // sheet ini ga harus di taroh di button bebas dimana aja, karna untuk nge buka sheet dia hanya perlu nge watch value dari variable $showExchangeInfo
                         ExchangeInfo()
