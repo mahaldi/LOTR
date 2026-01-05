@@ -28,6 +28,7 @@ struct ExchangeInfo: View {
                     .padding()
                 // exchange rates
                 ExchangeRate(leftImage: .goldpiece, text: "1 Gold Piece = 4 Gold Pennies", rightImage: .goldpenny)
+                ExchangeRate(leftImage: .goldpiece, text: "1 Gold Piece = 2.300.000 IDR", rightImage: .idr)
                 ExchangeRate(leftImage: .goldpenny, text: "1 Gold Penny = 4 Silver Pieces", rightImage: .silverpiece)
                 ExchangeRate(leftImage: .silverpiece, text: "1 Silver Piece = 4 Silver Pennies", rightImage: .silverpenny)
                 ExchangeRate(leftImage: .silverpenny, text: "1 Silver Penny = 1 Copper Pennies", rightImage: .copperpenny)

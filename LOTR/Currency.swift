@@ -11,6 +11,7 @@ enum Currency: Double, CaseIterable, Identifiable { // Identifiable untuk nambah
     case silverPenny = 64
     case silverPiece = 16
     case goldPenny = 4
+    case idr = 2300000
     case goldPiece = 1
     
     var id: Currency { self } // ga perlu ini juga bisa asal pas di loop, dikasih id: \.self
@@ -27,6 +28,8 @@ enum Currency: Double, CaseIterable, Identifiable { // Identifiable untuk nambah
                 .goldpenny
         case .goldPiece:
                 .goldpiece
+        case .idr:
+                .idr
         }
     }
     
@@ -42,6 +45,8 @@ enum Currency: Double, CaseIterable, Identifiable { // Identifiable untuk nambah
             "Gold Penny"
         case .goldPiece:
             "Gold Piece"
+        case .idr:
+            "IDR"
         }
     }
      
