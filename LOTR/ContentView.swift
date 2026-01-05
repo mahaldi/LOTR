@@ -113,7 +113,6 @@ struct ContentView: View {
                     Spacer()
                     Button {
                         showExchangeInfo.toggle()
-                        print("masuk")
                     } label: {
                         Image(systemName: "info.circle.fill")
                             .font(.largeTitle)
@@ -149,6 +148,10 @@ struct ContentView: View {
                     }
                 }
             }
+        }
+        .onTapGesture {
+            // to hide keyboard
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }
